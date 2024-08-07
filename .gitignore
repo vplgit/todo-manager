@@ -1,0 +1,12 @@
+# .gitignore
+
+# Ignore client environment files
+client/.env
+client/node_modules/
+
+# Ignore server environment files
+server/.env
+server/node_modules/
+
+# Ignore production build output
+client/build/
