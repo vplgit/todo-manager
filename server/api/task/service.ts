@@ -1,6 +1,8 @@
 import { messages } from "../../common/http-states/messages";
 import { statusCodes } from "../../common/http-states/status_code";
 
+import { TypeTask } from "./model/task.model";
+
 import { Task } from "../../interfaces/todo-task/task/Task";
 import { TaskBuilder } from "../../interfaces/todo-task/task/TaskBuilder";
 import { Memento } from "../../interfaces/todo-task/momento/Momento";
@@ -13,7 +15,7 @@ export class Service {
   };
 
   //service to get list of tasks
-  getList = async (body: any) => {
+  getList = async (body: TypeTask) => {
     try {
       const { filter } = body;
       let filteredTasks = this.tasks;
@@ -45,7 +47,7 @@ export class Service {
   };
 
   //service to save tasks
-  saveData = async (body: any) => {
+  saveData = async (body: TypeTask) => {
     try {
       const { description, dueDate, tags } = body;
       const taskBuilder = new TaskBuilder(description);
@@ -69,7 +71,7 @@ export class Service {
   };
 
   //service to change status of task/update task
-  markComplete = async (body: any) => {
+  markComplete = async (body: TypeTask) => {
     try {
       const { description } = body;
       const task = this.tasks.find((task) => task.description === description);
@@ -98,7 +100,7 @@ export class Service {
   };
 
   //service to delete task
-  deleteData = async (body: any) => {
+  deleteData = async (body: TypeTask) => {
     try {
       const { description } = body;
       this.tasks = this.tasks.filter(

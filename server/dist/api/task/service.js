@@ -26,7 +26,6 @@ class Service {
         this.getList = (body) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const { filter } = body;
-                console.log("Fileter :", filter);
                 let filteredTasks = this.tasks;
                 if (filter === "completed") {
                     filteredTasks = this.tasks.filter((task) => task.completed);
